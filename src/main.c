@@ -21,6 +21,7 @@ typedef struct{
     MenuOptionText menu[3];
     MenuOption activeOption;
     int optionIndex;
+    bool killGame;
 }Game;
 
 void SetTyping(struct termios* old, struct termios* new, bool disable);
@@ -65,6 +66,7 @@ void Update(Game* game){
     char key;
     DrawTermGame(game);
     while(running){
+        if(game->killGame) break; 
         read(STDIN_FILENO, &key, 1);
         if(CheckKeyInput(key, game)) running = false;
         DrawTermGame(game);
@@ -82,6 +84,15 @@ void MenuNavigation(Game* game, int key){
         if(game->optionIndex >= termSize) --game->optionIndex;
     }
     game->activeOption = game->menu[game->optionIndex].option;
+
+    if(key == '\n'){
+        switch(game->activeOption){
+            case START:
+            case OPTIONS:
+            case EXIT:
+                game->killGame = true;
+        }
+    }
 }
 bool CheckKeyInput(int key, Game* game){
     bool isReverse = false;
@@ -107,6 +118,7 @@ void TermSetup(Game* game){
 
     game->activeOption = START;
     game->optionIndex = 0;
+    game->killGame = false;
 }
 void DrawTermGame(Game* game){
     ClearTerm();
