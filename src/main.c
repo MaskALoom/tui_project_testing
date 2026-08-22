@@ -126,7 +126,8 @@ void DrawTermGame(Game* game){
     for(int i = 0; i < termSize; ++i){
         char drawString[255];
         strcpy(drawString, game->menu[i].text);
-        if(game->menu[i].option == game->activeOption) strcat(drawString, " <");
+        if(game->menu[i].option == game->activeOption)
+            strcat(drawString, " <");
         printf("%s\n", drawString);
     }
 }
