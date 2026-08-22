@@ -53,16 +53,9 @@ bool CheckKeyInput(int key){
         case 'e':
             printf("MEOW MEOW MEOW\n");
             break;
+        case 'i':
+            printf("Lets just pretend you opened your inventory or something!\n");
+            break;
     }
     return false;
 }
-
-
-
-
-
-
-
-
-
-
