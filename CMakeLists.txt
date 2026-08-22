@@ -7,5 +7,5 @@ add_executable(r)
 target_sources(r
     PRIVATE
     #src/main.c
-    src/newMain.c
+    src/main.c
 )
