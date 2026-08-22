@@ -4,18 +4,41 @@
 #include <unistd.h>
 #include <string.h>
 
+//#define OPTIONS_MENU (MenuOptionText[]){{"testing_thing", START}}
+
+typedef enum{
+    START,
+    OPTIONS,
+    EXIT
+}MenuOption;
+
+typedef struct{
+    char text[255];
+    MenuOption option;
+}MenuOptionText;
+
+typedef struct{
+    MenuOptionText menu[3];
+    MenuOption activeOption;
+    int optionIndex;
+}Game;
+
 void SetTyping(struct termios* old, struct termios* new, bool disable);
-void Update(void);
+void Update(Game* game);
 void ClearTerm(void);
-bool CheckKeyInput(int key);
+void TermSetup(Game* game);
+void DrawTermGame(Game* game);
+bool CheckKeyInput(int key, Game* game);
 
 int main(int argc, char* argv[]){
     struct termios old;
     struct termios new;
 
-    //ClearTerm();
+    Game game;
+    TermSetup(&game);
+
     SetTyping(&old, &new, false);
-    Update();
+    Update(&game);
     SetTyping(&old, &new, true);
 
     return 0;
@@ -37,15 +60,32 @@ void SetTyping(struct termios* old, struct termios* new, bool disable){
     tcsetattr(STDIN_FILENO, TCSANOW, new);
 }
 
-void Update(void){
+void Update(Game* game){
     bool running = true;
     char key;
+    DrawTermGame(game);
     while(running){
         read(STDIN_FILENO, &key, 1);
-        if(CheckKeyInput(key)) running = false;
+        if(CheckKeyInput(key, game)) running = false;
+        DrawTermGame(game);
     }
 }
-bool CheckKeyInput(int key){
+void MenuNavigation(Game* game, int key){
+    int termSize = sizeof(game->menu) / sizeof(game->menu[0]);
+    bool isReverse = false;
+    if(key == 'k'){
+        --game->optionIndex;
+        if(game->optionIndex < 0) ++game->optionIndex;
+    }
+    if(key == 'j'){
+        ++game->optionIndex;
+        if(game->optionIndex >= termSize) --game->optionIndex;
+    }
+    game->activeOption = game->menu[game->optionIndex].option;
+}
+bool CheckKeyInput(int key, Game* game){
+    bool isReverse = false;
+    MenuNavigation(game, key);
     switch(key){
         case 'q':
             printf("Exiting...\n");
@@ -56,6 +96,37 @@ bool CheckKeyInput(int key){
         case 'i':
             printf("Lets just pretend you opened your inventory or something!\n");
             break;
+        //Term Controls for the options menu
     }
     return false;
 }
+void TermSetup(Game* game){
+    game->menu[0] = (MenuOptionText){"START", START};
+    game->menu[1] = (MenuOptionText){"OPTIONS", OPTIONS};
+    game->menu[2] = (MenuOptionText){"EXIT", EXIT};
+
+    game->activeOption = START;
+    game->optionIndex = 0;
+}
+void DrawTermGame(Game* game){
+    ClearTerm();
+    int termSize = sizeof(game->menu) / sizeof(game->menu[0]);
+    for(int i = 0; i < termSize; ++i){
+        char drawString[255];
+        strcpy(drawString, game->menu[i].text);
+        if(game->menu[i].option == game->activeOption) strcat(drawString, " <");
+        printf("%s\n", drawString);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
