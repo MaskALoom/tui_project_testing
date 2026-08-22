@@ -6,5 +6,6 @@ add_executable(r)
 #target_link_libraries(r PRIVATE raylib)
 target_sources(r
     PRIVATE
-	src/main.c
+    #src/main.c
+    src/newMain.c
 )

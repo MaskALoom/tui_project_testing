@@ -1,1 +1,1 @@
-/usr/bin/cc CMakeFiles/r.dir/src/main.c.o -o r 
+/usr/bin/cc CMakeFiles/r.dir/src/newMain.c.o -o r 

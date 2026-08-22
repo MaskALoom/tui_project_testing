@@ -69,28 +69,28 @@ include CMakeFiles/r.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/r.dir/flags.make
 
-CMakeFiles/r.dir/src/main.c.o: CMakeFiles/r.dir/flags.make
-CMakeFiles/r.dir/src/main.c.o: /home/loom/Documents/C\ Projects/tui_project_testing/src/main.c
-CMakeFiles/r.dir/src/main.c.o: CMakeFiles/r.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/loom/Documents/C Projects/tui_project_testing/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/r.dir/src/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/r.dir/src/main.c.o -MF CMakeFiles/r.dir/src/main.c.o.d -o CMakeFiles/r.dir/src/main.c.o -c "/home/loom/Documents/C Projects/tui_project_testing/src/main.c"
+CMakeFiles/r.dir/src/newMain.c.o: CMakeFiles/r.dir/flags.make
+CMakeFiles/r.dir/src/newMain.c.o: /home/loom/Documents/C\ Projects/tui_project_testing/src/newMain.c
+CMakeFiles/r.dir/src/newMain.c.o: CMakeFiles/r.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/home/loom/Documents/C Projects/tui_project_testing/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/r.dir/src/newMain.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/r.dir/src/newMain.c.o -MF CMakeFiles/r.dir/src/newMain.c.o.d -o CMakeFiles/r.dir/src/newMain.c.o -c "/home/loom/Documents/C Projects/tui_project_testing/src/newMain.c"
 
-CMakeFiles/r.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/r.dir/src/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/loom/Documents/C Projects/tui_project_testing/src/main.c" > CMakeFiles/r.dir/src/main.c.i
+CMakeFiles/r.dir/src/newMain.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/r.dir/src/newMain.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/home/loom/Documents/C Projects/tui_project_testing/src/newMain.c" > CMakeFiles/r.dir/src/newMain.c.i
 
-CMakeFiles/r.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/r.dir/src/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/loom/Documents/C Projects/tui_project_testing/src/main.c" -o CMakeFiles/r.dir/src/main.c.s
+CMakeFiles/r.dir/src/newMain.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/r.dir/src/newMain.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/home/loom/Documents/C Projects/tui_project_testing/src/newMain.c" -o CMakeFiles/r.dir/src/newMain.c.s
 
 # Object files for target r
 r_OBJECTS = \
-"CMakeFiles/r.dir/src/main.c.o"
+"CMakeFiles/r.dir/src/newMain.c.o"
 
 # External object files for target r
 r_EXTERNAL_OBJECTS =
 
-r : CMakeFiles/r.dir/src/main.c.o
+r : CMakeFiles/r.dir/src/newMain.c.o
 r : CMakeFiles/r.dir/build.make
 r : CMakeFiles/r.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/home/loom/Documents/C Projects/tui_project_testing/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable r"
