@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 
-//#define OPTIONS_MENU (MenuOptionText[]){{"testing_thing", START}}
+//#define OPTIONS_MENU (MenuOptionText){"testing_thing", START}
 
 typedef enum{
     START,
@@ -41,6 +41,7 @@ int main(int argc, char* argv[]){
     SetTyping(&old, &new, false);
     Update(&game);
     SetTyping(&old, &new, true);
+    ClearTerm();
 
     return 0;
 }
@@ -88,7 +89,9 @@ void MenuNavigation(Game* game, int key){
     if(key == '\n'){
         switch(game->activeOption){
             case START:
+                break;
             case OPTIONS:
+                break;
             case EXIT:
                 game->killGame = true;
         }
